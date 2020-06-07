@@ -5,9 +5,9 @@ variables:
   buildConfiguration: 'Release'
 
 stages:
-- stage: Build
+- stage: 'Build'
   displayName: 'Build the web application'
-  jobs:
+  jobs: 
   - job: 'Build'
     displayName: 'Build job'
     pool:
@@ -65,9 +65,9 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
 
-- stage: Deploy
+- stage: 'Deploy'
   displayName: 'Deploy the web application'
-  dependsOn: Build,
+  dependsOn: Build
   jobs:
   - deployment: Deploy
     pool:
@@ -85,6 +85,6 @@ stages:
             displayName: 'Azure App Service Deploy: website'
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
-              appName: '$(WenAppName)'
+              appName: '$(WebAppName)'
               appType: webAppLinux
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
