@@ -122,7 +122,7 @@ stages:
               sqlPassword: '$(adminPassword)'
               deployType: DacpacTask
               deploymentAction: 'Script'
-              dacpacFile: '$(Pipeline.Workspace)/dropDacpac/Tailspin.SpaceGame.SpaceGame/bin/Debug/Tailspin.SpaceGame.Database.dacpac'
+              dacpacFile: '$(Pipeline.Workspace)/dropDacpac/Tailspin.SpaceGame.Database/bin/Debug/Tailspin.SpaceGame.Database.dacpac'
               ipDetectionMethod: 'AutoDetect'
           - task: PowerShell@2
             displayName: 'Show Auto Generated SQL Script'
